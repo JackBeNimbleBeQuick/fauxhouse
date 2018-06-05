@@ -1,0 +1,327 @@
+
+/*ELEMENTS BASE behavior*/
+input{
+  color: $white;
+  font-size: 0.9em;
+  padding: 3pt;
+  //there are a bunch more but just these for now
+  &::-webkit-placeholder,
+  &::placeholder{
+    @include fadedFont(255, 0.5);
+    font-size: 0.75em;
+  }
+}
+ul.row{
+  li{
+    display: inline-table;
+  }
+}
+h1{
+  margin: 0 0 1em;
+}
+h2{
+  font-size: 10pt;
+}
+h3{
+  font-size: 8pt;
+}
+h4{
+  font-size: 6pt;
+}
+h1{
+  quotes: initial;
+  &:after,&:before{
+    font-size: 1.5em;
+    @include quote()
+  }
+  &:before{
+    content: open-quote;
+    margin-left: -0.35em;
+  }
+  &:after{
+    content: close-quote;
+  }
+}
+.list{
+  .checkins{
+    @include fadedBG(0,0.5);
+    min-width: 300pt;
+    position: absolute;
+    transition: 0.5s all ease-in-out;
+    &.down{
+      tranform: translateX(-110%);
+    }
+  }
+}
+.form{
+  @include fadedBG(0,0.5);
+  position: absolute;
+  top: 2em;
+  transition: 0.5s all ease-in-out;
+  &.left{
+    transform: translateX(-110%);
+  }
+  form{
+    font-size: 0.8em;
+    min-width: 229pt;
+    padding: 0.5em;
+    position: relative;
+    top: 0;
+    input{
+      background-color: transparent;
+      font-size: 0.5em;
+    }
+    textarea{
+      width: 75%;
+      margin: 1em;
+    }
+    .row{
+      padding: 3pt;
+    }
+    input{
+      background-color: transparent;
+      border: 0.5pt solid #fff;
+      border-radius: 5pt;
+      color: $white;
+      margin: 0.5em 0;
+      &[type=submit]{
+        font-size: 8pt;
+        padding: 0 10pt 1pt 10pt;
+        background: green;
+        opacity: .5;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+    .error{
+      background-color: $white;
+      border-radius: 2px;
+      color: darkslategrey;
+      display: none;
+      font-size: 0.5em;
+      opacity: 1;
+      padding: 0 1pt;
+      transition: 0.5s all ease-in-out;
+      &.active{
+        display: inline-block;
+      }
+    }
+  }
+  a{
+    color: $white;
+    font-size: 0.5em;
+    text-decoration:none;
+    &[data-state=boolean-state],
+    &[data-state='button']{
+      color:$white;
+    }
+  }
+
+}
+.pull-right{
+  float:right;
+}
+.pull-left{
+  float:left;
+}
+.top{
+  position: absolute;
+  top: 0.5em;
+  &.right{
+    right: 0.25em;
+  }
+  &.left{
+    left: 0.25em;
+  }
+}
+.bottom{
+  position: absolute;
+  bottom: 0.5em;
+  &.right{
+    right: 0.25em;
+  }
+  &.left{
+    left: 0.25em;
+  }
+}
+.center{
+  text-align: center;
+}
+.nav{
+  background-color: rgba(0,0,0,.4);
+  border-radius: 5pt;
+  font-size: 0.6em;
+  font-weight: 2;
+  padding: 5pt;
+  position: absolute;
+  right: 0.5em;
+  transform: translateX(0);
+  transition: 0.5s all ease-in-out;
+  top: 0.5em;
+  z-index: 1;
+  li{
+    display: inline-table;
+    text-align: right;
+    margin: 0 0.5em;
+    &.divider{
+      background-color: $white;
+      height: 1.5em;
+      position:relative;
+      top: 3pt;
+      width: 0.5pt;
+    }
+    &.login{
+      padding-left: 8pt;
+      border-left: solid 0.5pt $white;
+    }
+    a{
+      @include fadedFont(255, 0.65);
+      text-decoration: none;
+      &:hover{
+        color: $white;
+      }
+    }
+  }
+}
+
+.nav-button{
+  background: transparent;
+  border: none;
+  padding: 0;
+  right: .5em;
+  top: 0.5em;
+  position: absolute;
+  transform: translateY(-100%);
+  z-index: 1;
+  &:active{
+    .icon{
+      font-size: 1.5em;
+    }
+  }
+  .icon{
+    border: solid 0.5pt rgba(255,255,255, 0.5);
+    border-radius: 3pt;
+    color: $darkgreen;
+    font-size: 1.25em;
+    padding: 2pt;
+  }
+}
+
+.menu.slider{
+  ul.nav{
+    right: 3.5em;
+    transform: translate(0, -110%);
+    li{
+      display: block;
+      padding: 5pt;
+      text-align: left;
+      a:active{
+        color: $grey;
+      }
+      &.login{
+        border: none;
+        margin-left:0;
+      }
+    }
+  }
+  &.down{
+    .nav{
+      transform: translate(0, 0);
+    }
+  }
+}
+
+/*COMPONENT CONTAINERS*/
+.main{
+  &.cardb{
+    .carda{
+      transform: translateX(100%);
+    }
+    .cardb{
+      transform: translateX(0);
+    }
+  }
+  &.carda{
+    .cardb{
+      transform: translateX(-100%);
+    }
+    .carda{
+      transform: translateX(0);
+    }
+  }
+  .carda{
+    transform: translateX(0);
+  }
+  .cardb{
+    transform: translateX(100%);
+  }
+  .carda, .cardb{
+    transition: 1s all ease-in-out;
+    position: absolute;
+    top: 0;
+  }
+  .header{
+    // position: relative;
+    overflow: hidden;
+    transition: 0.5s all ease-in-out;
+    top: 0;
+    width: 100%;
+    img{
+      display:block;
+      height:auto;
+      width:100%;
+      object-fit:cover;
+    }
+    .text{
+      color: $white;
+      margin: 0;
+      text-align: center;
+      transition: 0.5s all ease-in-out;
+      position: absolute;
+      top: 3em;
+      quotes: initial;
+      width: 100%;
+      &.down{
+        top: auto;
+        bottom: 3em;
+      }
+      h1,h2,h3,h4{
+        color: $white;
+        font-weight: 300;
+        &.left{
+          text-align: left;
+          margin-left: 2em;
+        }
+        &.right{
+          text-align: right;
+          margin-right: 2em;
+        }
+      }
+
+    }
+  }
+  .row{
+    ul{
+      li{
+        display: inline-table;
+        padding: .015em;
+      }
+    }
+  }
+}
+@media(max-width:480px){
+  .nav{
+    transform: translateX(110%);
+  }
+  .nav-button{
+    transform: translateY(0);
+  }
+}
+@media(min-width:600px){
+  .main .header.login .form form{
+    bottom:auto;
+    margin: 0 4em 0 0;
+    right: 0;
+  }
+}

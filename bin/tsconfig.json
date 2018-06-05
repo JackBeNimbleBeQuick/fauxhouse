@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es5",
+    "preserveConstEnums": true,
+    "outDir": "js/",
+    "baseUrl": "",
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "watch": false,
+    "allowJs": true,
+    "sourceMap": true
+  },
+  "files" : [
+    "ts/index.tsx",
+  ],
+  "filesGlob":[
+    "**/*.ts"
+  ],
+  "lib":[
+    "es6",
+    "react",
+    "dom",
+    "dom.iterable"
+  ],
+  "exclude":[
+    "vendor",
+    "ts"
+  ],
+  "include" : [
+    "ts/**/*",
+  ]
+}
