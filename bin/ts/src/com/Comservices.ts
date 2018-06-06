@@ -51,8 +51,7 @@ export class Comservices{
     this.forward = success;
     this.connect.send({
       url: params.base + params.appointments,
-      type: 'POST',
-      data: {}
+      type: 'GET'
     },this.packager, error);
   }
 

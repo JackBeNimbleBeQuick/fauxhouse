@@ -19,6 +19,7 @@ export class Connected{
 
 
   public constructor(){
+		this.xhr = this.requester();
   }
 
 	private requester(){
@@ -31,7 +32,6 @@ export class Connected{
 	}
 
   public send = (postage:postage, success:Function, failure:Function) => {
-		this.xhr = this.requester();
     this.xhr.open(this.getType(postage), postage.url , true);
 		this.setHeaders();
     if(postage.setCORS && postage.setCORS == true) this.setCORSRequest();

@@ -12,9 +12,9 @@ export class Session implements Session{
   }
 
   public permitted = (key:string) => {
-    console.log(`actions received: ${key}`);
+    // console.log(`actions received: ${key}`);
     let stored = this.retrieve('login');
-    console.log(stored);
+    // console.log(stored);
     if ( ! stored || ! this.logged(stored) ) return false;
     if(stored.permits && stored.permits.zones[key]) return stored.permits.zones[key];
     return false;

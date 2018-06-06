@@ -18,7 +18,7 @@ class App extends React.Component  < any, any > {
 
   static defaultProps:mainProps = {
     switch_time: 1000,
-    filter: /\b(home|solutions|about|demo|blog|checkins|login|logout|appointments)\b/,
+    filter: /\b(home|solutions|about|demo|blog|checkins|login|logout|appointments|logout)\b/,
     seq: {
       '#home': {num: 1, label: 'Your are home'},
       '#solution': {num: 2, label: 'We have the solutions'},
@@ -86,12 +86,12 @@ class App extends React.Component  < any, any > {
 
     if(href && href !== this.state.page){
 
-      console.log(href);
+      // console.log(href);
       // what is next card name
       let ccard = this.state.c_card;
       let ncard = ccard == 'carda' ? 'cardb' : 'carda';
       let next = this.container(href ? href : '#home');
-      console.log(`current: ${ccard} next: ${ncard} `);
+      // console.log(`current: ${ccard} next: ${ncard} `);
 
       this.setState({
         menu: 'up',
@@ -115,10 +115,9 @@ class App extends React.Component  < any, any > {
   render() {
 
 
-
     //@NOTE the current implemention provides a washboard slider
     // ... adding direction will allow ordering ... will do this later
-    // ... same approach can not support cube flips and a number of other transforms
+    // ... same approach can now support cube flips and a number of other transforms
     let nav   = ['nav-button']
     let slide = ['menu','slider']
     let ccard = this.state.c_card;
