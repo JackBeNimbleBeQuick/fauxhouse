@@ -21,10 +21,10 @@ interface indexed_string{
 interface postage {
   url: string,
   type: string,
-  data?: Object,
+  data?: Object|null,
+  header_type?: string, //cors,form,json
   wait?: number,
-  debug?: Boolean,
-  setCORS?: Boolean,
+  debug?: Boolean
 }
 
 interface serviceClass {

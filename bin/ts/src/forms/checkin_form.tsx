@@ -1,19 +1,19 @@
 import * as React from 'react';
 
 import Radio from  '../component/radio';
-import {Utils} from '../common/utils';
+import {Dates} from '../common/util/Dates';
 
 class CheckinForm extends React.Component <any, any > {
   //@TODO move this into inrerface.pageProps
   static defaultProps = {
     show: '',
     checkIn: ()=>{alert('override me you fool 8^]')},
-    handler: ()=>{alert('override me you fool 8^]')}
+    history: ()=>{alert('override me you fool 8^]')}
   }
 
   constructor(props:any){
     super(props);
-    let today = Utils.datesFormat(new Date(),'yyyy-mm-dd');
+    let today = Dates.datesFormat(new Date(),'yyyy-mm-dd');
     // console.log(today);
     // console.log(new Date().getMonth());
     this.state = {
@@ -26,14 +26,13 @@ class CheckinForm extends React.Component <any, any > {
     this.changes.bind(this);
   }
 
-  getRecent = (e:any ) =>{
+  history = (e:any ) =>{
     e.preventDefault()
-    this.setState({show:'left'});
-    this.props.handler(e);
+    this.props.history(e);
   }
 
-  //@TODO there is a whole query
-  //@TODO by date things that is not yet implemented
+  //@TODO there is a whole query by date thing
+  // . that could happen here
   // . this would apply for that
   setDate = (e:any) => {
     let value = e.target.value;
@@ -43,7 +42,7 @@ class CheckinForm extends React.Component <any, any > {
       date = new Date();
     }
      this.setState({
-       date:Utils.datesFormat(date,'yyy-dd-mm')
+       date:Dates.datesFormat(date,'yyyy-dd-mm')
      });
   }
 
@@ -60,14 +59,12 @@ class CheckinForm extends React.Component <any, any > {
       date = new Date(date);
     }
 
-    let s_date = Utils.datesFormat(date,'yyyy-mm-dd').trim();
-    let post = {
+    let s_date = Dates.datesFormat(date,'yyyy-mm-dd').trim();
+    this.props.checkIn({
       date: s_date,
       comment: this.state.comment,
       'check-in': true
-    }
-    // console.log(JSON.stringify(post));
-    this.props.checkIn(JSON.stringify(post));
+    });
 
     return true;
   }
@@ -109,7 +106,7 @@ class CheckinForm extends React.Component <any, any > {
               </li>
               <li className="pull-right">
                 <a data-state="button" href="#getRecent"
-                  onClick={e => this.getRecent(e)}
+                  onClick={e => this.history(e)}
                    >Get history </a>
               </li>
             </ul>

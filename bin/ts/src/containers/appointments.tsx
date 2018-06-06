@@ -30,6 +30,7 @@ class Appointments extends React.Component <any, any > {
   }
 
   renderList = (response:any) => {
+    this.setState({showQuery: false});
     this.setState({checkins: response})
   }
 
@@ -38,12 +39,17 @@ class Appointments extends React.Component <any, any > {
   }
 
   getHistory = () => {
-    this.props.services.appointmentHistory(this.renderList, this.serviceError);
+    this.props.services.get(
+      this.renderList,
+      this.serviceError
+    );
   }
 
   checkIn = (data: appointmentHistory) => {
-    this.props.services.checkIn(
-      JSON.stringify(data),this.renderList, this.serviceError
+    this.props.services.post(
+      data,
+      this.renderList,
+      this.serviceError
     );
   }
 
@@ -70,7 +76,7 @@ class Appointments extends React.Component <any, any > {
         </div>
 
         <CheckinForm
-          handler = {this.getHistory}
+          history= {this.getHistory}
           checkIn = {this.checkIn}
           show = { show }
         />

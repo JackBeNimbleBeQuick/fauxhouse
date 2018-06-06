@@ -1,16 +1,19 @@
 
 
-export class Utils{
+/**
+ * DateString Util
+ *
+    @TODO
+     .finish unit test for all use cases,
+     .clean simplify regex ... everything was made explicit on first pass
 
-
-
+ * @return {string}
+ */
+export class Dates{
   /**
    * Provide rudermentory date formatting
    * @param {Date, string}
    * @return {string}
-    @TODO
-     .finish unit test for all use cases,
-     .clean simplify regex ... everything was made explicit on first pass
    */
   public static datesFormat = (date: Date, format: string):string => {
     let dividers = format.trim().match(/[\/\-\.]|(\b(\s)|(\,\s)\b)/g);

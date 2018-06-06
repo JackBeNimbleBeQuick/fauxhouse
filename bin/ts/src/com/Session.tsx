@@ -91,6 +91,7 @@ export class Session implements Session{
         url: service.base + service.login,
         type: 'POST',
         data: JSON.stringify(data),
+        header_type: 'form'
     }
   }
 

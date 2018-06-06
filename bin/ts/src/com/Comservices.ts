@@ -19,8 +19,7 @@ export class Comservices{
     this.connect = new Connected();
   }
 
-
-  //checkin  appointment
+  //POST
   /**
    * @TODO Move this to somewhere that makes better sense
    * Get Appointments History
@@ -28,17 +27,18 @@ export class Comservices{
    * @param  {Function} error   [description]
    * @return {void} Connected:sends passes results to the passed in functions
    */
-  public checkIn = (post:appointmentHistory ,success:Function, error:Function ) =>{
+  public post = (post:appointmentHistory ,success:Function, error:Function ) =>{
     let params = this.services.params;
     this.forward = success;
     this.connect.send({
       url: params.base + params.appointments,
       type: 'POST',
-      data: post
+      data: JSON.stringify(post),
+      header_type: 'form'
     },this.packager, error);
   }
 
-  //get week log
+  //GET
   /**
    * @TODO Move this to somewhere that makes better sense
    * Get Appointments History
@@ -46,15 +46,27 @@ export class Comservices{
    * @param  {Function} error   [description]
    * @return {void} Connected:sends passes results to the passed in functions
    */
-  public appointmentHistory = (success:Function, error:Function ) =>{
+  public get= (success:Function, error:Function ) =>{
     let params = this.services.params;
     this.forward = success;
     this.connect.send({
       url: params.base + params.appointments,
-      type: 'GET'
+      type: 'GET',
+      data: null, // 8^) looking into this
+      header_type: 'form'
     },this.packager, error);
   }
 
+  //PACKAGE
+  /**
+   * To handle hydration and any other needs that may be needed
+   * as the app layer evolves so as to provide
+   * . single simple call signatures at app level
+   * . offload and communication details from the app layer
+   * . maintain reusability with other communication types
+   * @param  data [description]
+   * @return      [description]
+   */
   private packager = (data:any) => {
     console.log(data);
     let boxed = typeof data === 'object' ? data : JSON.parse(data);

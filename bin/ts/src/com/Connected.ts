@@ -2,13 +2,13 @@
 
 export class Connected{
 
-	//Keep for reference event though query stats are now stripped out
+	//Keep for reference even though query stats are now stripped out
 	private MEDIA_TYPES:string[] = ["application/json", "application/x-www-form-urlencoded", "text/plain", "text/html"];
 
   private xhr: XMLHttpRequest;
 
 
-	//Keep for reference event though query stats are now stripped out
+	//Keep for reference even though query stats are now stripped out
   private states:comState = {
     0: {key: 'UNSENT', explained: 'Client has been created. open() not called yet.'},
     1: {key: 'OPENED', explained: 'open() has been called.'},
@@ -33,8 +33,9 @@ export class Connected{
 
   public send = (postage:postage, success:Function, failure:Function) => {
     this.xhr.open(this.getType(postage), postage.url , true);
-		this.setHeaders();
-    if(postage.setCORS && postage.setCORS == true) this.setCORSRequest();
+		this.setHeaders(postage.header_type);
+
+    //es6+ may not need this for better scoped vars
     let xhr_ = this.xhr;
     this.xhr.onreadystatechange = () => {
       if (xhr_.readyState == XMLHttpRequest.DONE) {
@@ -48,18 +49,27 @@ export class Connected{
     xhr_.send(postage.data);
   }
 
-	//@NOTE server side Response Headers... @FIXME
-	private setCORSRequest = () => {
-		this.xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
-		this.xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-		return this.xhr;
-	}
 
-	private setHeaders= () => {
-		this.xhr.setRequestHeader("Content-Type","application/json");
-		this.xhr.setRequestHeader("Accept","application/json");
-		return this.xhr;
-	}
+	private setHeaders= (type:any) => {
+    switch(type){
+      case 'form':
+    		this.xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    		this.xhr.setRequestHeader("Accept","application/json");
+      break;
+      case 'json':
+    		this.xhr.setRequestHeader("Content-Type","application/json");
+      break;
+
+    	//@NOTE server side Response Headers... @FIXME
+      case 'cors':
+    		this.xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
+    		this.xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      break;
+
+      default:
+    		this.xhr.setRequestHeader("Content-Type","application/json");
+    }
+  };
 
    private getType(datum:postage){
     let matchable = datum.type.match(/\b(post|get|delete|put)\b/i);
