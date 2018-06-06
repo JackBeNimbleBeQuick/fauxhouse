@@ -47,28 +47,32 @@ class CheckinForm extends React.Component <any, any > {
      });
   }
 
+  //@TODO there is query by date not implemented
   submit = (el:any) => {
     el.preventDefault();
 
-    //do not update the listing we pull !! reminding myself
-    let s_date:string;
     let date = this.state.date;
-    if( date || this.state.mode=='checkin' ){
+    let iss  = typeof date == 'string';
+    let isdo = date instanceof Date;
+    if( this.state.mode=='checkin' ){
       date = new Date();
+    }else if(iss && ! isdo && date.length > 0){
+      date = new Date(date);
     }
 
-    s_date = Utils.datesFormat(date,'yyy-mm-dd');
-    this.props.checkIn({
+    let s_date = Utils.datesFormat(date,'yyyy-mm-dd').trim();
+    let post = {
       date: s_date,
-      comments: this.state.comments,
+      comment: this.state.comment,
       'check-in': true
-    });
+    }
+    // console.log(JSON.stringify(post));
+    this.props.checkIn(JSON.stringify(post));
 
     return true;
   }
 
   changes = (e:any) => {
-    console.log(e);
     let name  = e.target.name;
     let value = e.target.value;
     this.setState({[name]: value});
