@@ -6,7 +6,7 @@ import {Dates} from '../common/util/Dates';
 class CheckinForm extends React.Component <any, any > {
   //@TODO move this into inrerface.pageProps
   static defaultProps = {
-    show: '',
+    show: 'left',
     checkIn: ()=>{alert('override me you fool 8^]')},
     history: ()=>{alert('override me you fool 8^]')}
   }
@@ -17,7 +17,6 @@ class CheckinForm extends React.Component <any, any > {
     // console.log(today);
     // console.log(new Date().getMonth());
     this.state = {
-      show: this.props.show,
       mode:'checkin',
       date: today,
       comment: ''
@@ -28,6 +27,7 @@ class CheckinForm extends React.Component <any, any > {
 
   history = (e:any ) =>{
     e.preventDefault()
+    // console.log(e);
     this.props.history(e);
   }
 
@@ -49,6 +49,7 @@ class CheckinForm extends React.Component <any, any > {
   //@TODO there is query by date not implemented
   submit = (el:any) => {
     el.preventDefault();
+    this.setState({comment:''});
 
     let date = this.state.date;
     let iss  = typeof date == 'string';

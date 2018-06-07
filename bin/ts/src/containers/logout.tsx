@@ -1,5 +1,4 @@
 import * as React from 'react';
-import LoginForm from '../forms/login_form';
 import {Session} from '../com/Session';
 
 class Logout extends React.Component <any, any > {
@@ -16,7 +15,7 @@ class Logout extends React.Component <any, any > {
       name: 'home',
       props: this.props
     }
-    new Session().logout()
+    new Session().logout();
   }
 
   render() {

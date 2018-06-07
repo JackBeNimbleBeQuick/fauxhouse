@@ -34,7 +34,7 @@ export class Comservices{
       url: params.base + params.appointments,
       type: 'POST',
       data: JSON.stringify(post),
-      header_type: 'form'
+      header_type: 'form',
     },this.packager, error);
   }
 
@@ -68,7 +68,7 @@ export class Comservices{
    * @return      [description]
    */
   private packager = (data:any) => {
-    console.log(data);
+    // console.log(data);
     let boxed = typeof data === 'object' ? data : JSON.parse(data);
     return this.forward(boxed);
   }

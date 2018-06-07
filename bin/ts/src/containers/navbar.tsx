@@ -11,6 +11,7 @@ class Navbar extends React.Component <any, any > {
   static defaultProps = {
     session: new Session(),
     position: '',
+    triggerNav: false,
     bars:[
       {solution: 'Our Solution'},
       {about: 'About Us'},

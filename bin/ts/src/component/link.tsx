@@ -2,7 +2,6 @@ import * as React from 'react';
 
 class Link extends React.Component <any, any > {
 
-  //@TODO move this into inrerface.linkProps
   static defaultProps = {
     event: {},
     name: 'NameMe',

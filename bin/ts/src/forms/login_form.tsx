@@ -42,7 +42,6 @@ class LoginForm extends React.Component <any, any > {
       let valid_  = validate[field]['validator'];
       let value   = this.state[field];
       let valid   = valid_.test(value);
-      // console.log(`f: ${field} v: ${value} isValid: ${valid}`);
       if(!valid){
         this.setState({message: message});
         return false;
@@ -67,9 +66,7 @@ class LoginForm extends React.Component <any, any > {
   }
 
   forgotten = (el:any) => {
-    console.log('forgotten');
     el.preventDefault();
-    console.log(el);
   }
 
   changes = (e:any) => {

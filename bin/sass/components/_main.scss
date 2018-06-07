@@ -1,4 +1,7 @@
 
+/*HTML overrides*/
+
+
 /*ELEMENTS BASE behavior*/
 input{
   color: $white;
@@ -43,13 +46,39 @@ h1{
   }
 }
 .list{
-  .checkins{
-    @include fadedBG(0,0.5);
-    min-width: 300pt;
+  &.checkins{
+    @include fadedBG(0,0.8);
+    color: white;
+    margin: 0 calc(50% - 100pt);
+    padding: 0 0 2em 0;
     position: absolute;
     transition: 0.5s all ease-in-out;
-    &.down{
-      tranform: translateX(-110%);
+    transform: translateY(0);
+    text-align: center;
+    top: 3em;
+    width: 200pt;
+    &.up{
+      transform: translateY(-200%);
+    }
+    .heading{
+      font-size: 0.8em;
+      height: 2em;
+      padding: 15pt;
+    }
+    ul{
+      padding: 3pt;
+      li{
+        text-align:center;
+        width: 75pt;
+        &:first-child{
+          text-align:left;
+          margin-right: 5pt;
+          width: auto;
+        }
+      }
+    }
+    .icon-check{
+      color: $green;
     }
   }
 }
@@ -58,6 +87,14 @@ h1{
   position: absolute;
   top: 2em;
   transition: 0.5s all ease-in-out;
+  .closer{
+    color: $white;
+    position: absolute;
+    right: 0;
+    &.open{
+      color: green;
+    }
+  }
   &.left{
     transform: translateX(-110%);
   }
@@ -88,9 +125,9 @@ h1{
         font-size: 8pt;
         padding: 0 10pt 1pt 10pt;
         background: green;
-        opacity: .5;
+        @include opacity(0.5);
         &:hover{
-          opacity: 1;
+          @include opacity(1);
         }
       }
     }
@@ -100,7 +137,7 @@ h1{
       color: darkslategrey;
       display: none;
       font-size: 0.5em;
-      opacity: 1;
+      @include opacity(1);
       padding: 0 1pt;
       transition: 0.5s all ease-in-out;
       &.active{
@@ -149,7 +186,7 @@ h1{
   text-align: center;
 }
 .nav{
-  background-color: rgba(0,0,0,.4);
+  @include fadedBG(0,0.8);
   border-radius: 5pt;
   font-size: 0.6em;
   font-weight: 2;
@@ -225,6 +262,7 @@ h1{
       }
     }
   }
+
   &.down{
     .nav{
       transform: translate(0, 0);

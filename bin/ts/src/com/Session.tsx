@@ -39,20 +39,26 @@ export class Session implements Session{
             }
           },
         });
-        console.log('oko <8^] ')
-        console.log(response);
-        console.log(s_resp);
-        console.log(compare);
-        console.log(this.config);
+        // console.log(response);
+        // console.log(s_resp);
+        // console.log(compare);
+        // console.log(this.config);
         return this.forward(true);
       }
-      console.log('ooops !3^[ ')
-      console.log(response);
+      // console.log('ooops !3^[ ')
+      // console.log(response);
       return error(response)
     }
 
 
     this.connect().send(this.loginPostage(data),succeeds, error);
+  }
+
+  public loginName = () => {
+    let login = this.retrieve('login');
+    if(login) return login.name;
+    return 'Not logged in...';
+
   }
 
   public logout = () => {

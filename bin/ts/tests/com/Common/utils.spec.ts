@@ -35,7 +35,6 @@ describe('Date Util.dateFormat test', ()=>{
 
       expect = `${m}-${yy}-${d}`;
       d_string = Dates.datesFormat(dates[i],'m-y-d');
-      console.log(`r: ${d_string} e: ${expect} `);
 
       // @NOTE need to come up series of none string tests
       // or use bit wise tests on strings

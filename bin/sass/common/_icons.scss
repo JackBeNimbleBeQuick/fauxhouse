@@ -59,6 +59,41 @@ a[data-state=boolean-state]{
     }
   }
 }
+button.closer{
+  background: none;
+  border: none;
+  outline: none;
+  &:focus{
+    .icon{
+      background: none;
+      border: none;
+      outline: none;
+    }
+  }
+}
+.closer{
+  border: none,
+  &:focus,
+  &:active,
+  &:hover{
+    .icon{
+      color: $red;
+    }
+  }
+  .icon{
+    border: solid 0.5pt rgba(255, 255, 255, 0.5);
+    border-radius: 3pt;
+    color: $green;
+    font-size: 2em;
+    padding: 2pt;
+    position: absolute;
+    right: 4px;
+    top: 4pt;
+    &:before{
+      content: "\e014";
+    }
+  }
+}
 // Booean State Switch END
 
 a[data-state=toogle_visisble]{
@@ -126,8 +161,10 @@ a.dom-query{
     clear: both;
   }
 }
-button.icon{
-  border: 0;
+button{
+  .icon{
+    border: 0;
+  }
 }
 .dropdown-arrow{
   color: $darkgreen;

@@ -33,8 +33,11 @@ class App extends React.Component  < any, any > {
 
   constructor(props:any){
     super(props);
+    let session = new Session();
+
     this.state = {
-      service: new Session(),
+      session: session,
+      triggerNav: false,
       menu: 'up',
       page: '#home',
       c_card: 'carda',
@@ -60,6 +63,7 @@ class App extends React.Component  < any, any > {
         case '#appointments':
           return <Appointments/>
         case '#logout':
+          this.setState({triggerNav: true});
           return <Logout/>
         case '#login':
           return <Login/>
@@ -141,10 +145,14 @@ class App extends React.Component  < any, any > {
 
         <span className={slide.join(' ')}>
           <Navbar
+            toggle = {this.state.triggerNav}
             position = {this.state.menu}
             handler={this.handleChange}/>
         </span>
-        <Navbar handler={this.handleChange}/>
+        <Navbar
+          toggle = {this.state.triggerNav}
+          handler={this.handleChange}
+        />
         <div className="carda">
           {this.state.carda}
         </div>

@@ -33,13 +33,16 @@ export class Connected{
 
   public send = (postage:postage, success:Function, failure:Function) => {
     this.xhr.open(this.getType(postage), postage.url , true);
+
 		this.setHeaders(postage.header_type);
 
     //es6+ may not need this for better scoped vars
     let xhr_ = this.xhr;
     this.xhr.onreadystatechange = () => {
+      // this.processServerResponse();
       if (xhr_.readyState == XMLHttpRequest.DONE) {
         if(xhr_.status == 200){
+      this.processServerResponse();
           return success(xhr_.responseText);
         }else{
 	        return failure(xhr_.responseText);
@@ -49,21 +52,32 @@ export class Connected{
     xhr_.send(postage.data);
   }
 
+  private processServerResponse = () => {
+    let headers = this.xhr.getAllResponseHeaders();
+    // console.log(headers);
+  }
+
 
 	private setHeaders= (type:any) => {
     switch(type){
       case 'form':
     		this.xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     		this.xhr.setRequestHeader("Accept","application/json");
+    		this.xhr.setRequestHeader("Access-Control-Allow-Credentials",'true');
       break;
       case 'json':
     		this.xhr.setRequestHeader("Content-Type","application/json");
       break;
 
     	//@NOTE server side Response Headers... @FIXME
+      /*
+    		"Access-Control-Allow-Origin", '*'
+    		"Access-Control-Allow-Headers",
+          "Origin, X-Requested-With, Content-Type, Accept"
+       */
+
       case 'cors':
-    		this.xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
-    		this.xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        this.xhr.withCredentials = true;
       break;
 
       default:
