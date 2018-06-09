@@ -18,7 +18,7 @@ class App extends React.Component  < any, any > {
 
   static defaultProps:mainProps = {
     switch_time: 1000,
-    filter: /\b(home|solutions|about|demo|blog|checkins|login|logout|appointments|logout)\b/,
+    filter: /\b(home|solution|about|demo|blog|checkins|login|logout|appointments|logout)\b/,
     seq: {
       '#home': {num: 1, label: 'Your are home'},
       '#solution': {num: 2, label: 'We have the solutions'},

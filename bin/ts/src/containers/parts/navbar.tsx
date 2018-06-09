@@ -13,6 +13,7 @@ class Navbar extends React.Component <any, any > {
     position: '',
     triggerNav: false,
     bars:[
+      {home: 'Welcome'},
       {solution: 'Our Solution'},
       {about: 'About Us'},
       {demo: 'Demo'},

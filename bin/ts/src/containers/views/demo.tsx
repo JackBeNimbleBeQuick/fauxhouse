@@ -17,7 +17,7 @@ class Demo extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header bg-image demo">
+      <div className="header  demo">
         <div className="text large">
           <h1>{this.state.props.bigWords}</h1>
         </div>

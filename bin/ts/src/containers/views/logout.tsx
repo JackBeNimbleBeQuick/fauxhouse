@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {Session} from '../../com/Session';
 
 class Logout extends React.Component <any, any > {
@@ -20,7 +21,7 @@ class Logout extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header bg-image logout">
+      <div className="header  logout">
         <div className="text">
           <h1>{this.state.props.bigWords}</h1>
           <h4>{this.state.props.smallWords}</h4>

@@ -17,7 +17,7 @@ class Blog extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header bg-image blog">
+      <div className="header  blog">
         <div className="text">
           <h1 className="left">{this.state.props.bigWords}</h1>
         </div>

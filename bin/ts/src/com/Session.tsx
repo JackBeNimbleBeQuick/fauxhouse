@@ -39,14 +39,8 @@ export class Session implements Session{
             }
           },
         });
-        // console.log(response);
-        // console.log(s_resp);
-        // console.log(compare);
-        // console.log(this.config);
         return this.forward(true);
       }
-      // console.log('ooops !3^[ ')
-      // console.log(response);
       return error(response)
     }
 

@@ -89,6 +89,7 @@ h1{
   top: 3em;
   transition: 0.5s all ease-in-out;
   width: 200pt;
+  z-index: 1;
   .closer{
     color: $white;
     position: absolute;
@@ -290,7 +291,7 @@ h1{
     }
   }
   .carda,.cardb{
-    height: 200pt;
+    // height: 200pt;
     overflow: hidden;
   }
   .carda{
@@ -305,16 +306,23 @@ h1{
     top: 0;
   }
   .header{
-    // position: relative;
+    height: 150pt;
+    position: relative;
     overflow: hidden;
     transition: 0.5s all ease-in-out;
     top: 0;
     width: 100%;
-    img{
-      display:block;
-      height:auto;
-      width:100%;
-      object-fit:cover;
+    .bg{
+      background-color: #000;
+      height: 100%;
+      img{
+        background-color: #000;
+        margin-left: -50%;
+        margin-top: -50%;
+        @include opacity(0.7);
+        top: 50%;
+        width:200%;
+      }
     }
     .text{
       color: $white;
@@ -325,9 +333,10 @@ h1{
       top: 3em;
       quotes: initial;
       width: 100%;
+      z-index: 1;
       &.down{
         top: auto;
-        bottom: 3em;
+        bottom: 1em;
       }
       h1,h2,h3,h4{
         color: $white;
@@ -340,6 +349,25 @@ h1{
           text-align: right;
           margin-right: 2em;
         }
+      }
+      p{
+        font-size: 0.75em;
+        font-style: oblique;
+        text-align: left;
+        &.small{
+          font-size: 0.55em;
+        }
+        &.medium{
+          font-size: 0.65em;
+        }
+        &.large{
+          font-size: 0.75em;
+        }
+      }
+      blockquote{
+        height: 5em;
+        margin: 0 2.2em;
+        overflow: auto;
       }
 
     }
@@ -356,7 +384,7 @@ h1{
 @media(min-width:768px){
   .main{
     .carda,.cardb{
-      height: 365pt;
+      // height: 365pt;
     }
   }
 }
@@ -370,7 +398,7 @@ h1{
       right: 0;
     }
     .carda,.cardb{
-      height: 125pt;
+      // height: 125pt;
     }
   }
   .nav{

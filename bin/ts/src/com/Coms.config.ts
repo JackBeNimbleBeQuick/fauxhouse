@@ -5,14 +5,14 @@ export class Config {
   public static getServices = ():services => {
 
     let prodService:appointmentService = {
-      base: 'https://somewhereNice.com/',
+      base: 'https://loginservice.com/',
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'check-ins',
     }
 
     let devService:appointmentService =  {
-      base: 'https://ue7jsck4wk.execute-api.us-west-2.amazonaws.com/staging/',
+      base: 'local-host:',
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'check-ins',

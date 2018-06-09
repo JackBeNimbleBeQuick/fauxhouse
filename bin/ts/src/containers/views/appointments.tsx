@@ -81,7 +81,7 @@ class Appointments extends React.Component <any, any > {
     return (
       <div className="page">
 
-        <div className="header bg-image appointments">
+        <div className="header  appointments">
 
           <div className="text">
             <h2>{this.props.title}</h2>
