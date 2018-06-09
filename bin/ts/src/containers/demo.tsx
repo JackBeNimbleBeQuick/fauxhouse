@@ -21,7 +21,7 @@ class Demo extends React.Component <any, any > {
         <div className="text large">
           <h1>{this.state.props.bigWords}</h1>
         </div>
-        <img src="css/images/demo.png"/>
+        <img src="css/images/bamboo_steps.png"/>
       </div>
     );
   }
