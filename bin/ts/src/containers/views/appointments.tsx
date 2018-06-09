@@ -1,10 +1,10 @@
 
-/// <reference path="../com/interfaces.d.ts"/>
+/// <reference path="../../com/interfaces.d.ts"/>
 import * as React from 'react';
-import CheckinForm from '../forms/checkin_form';
-import Checkins from './checkins';
-import {Dates} from '../common/util/Dates';
-import {Comservices} from '../com/Comservices'
+import CheckinForm from '../../forms/checkin_form';
+import Checkins from '../parts/checkins';
+import {Dates} from '../../common/util/Dates';
+import {Comservices} from '../../com/Comservices'
 
 class Appointments extends React.Component <any, any > {
 
@@ -81,7 +81,7 @@ class Appointments extends React.Component <any, any > {
     return (
       <div className="page">
 
-        <div className="header home">
+        <div className="header bg-image appointments">
 
           <div className="text">
             <h2>{this.props.title}</h2>
@@ -93,7 +93,10 @@ class Appointments extends React.Component <any, any > {
               >Make / Edit</a>
           </span>
 
-          <img src="css/images/waterpath.png"/>
+          <div className="bg">
+            <img src="css/images/waterpath.png"/>
+          </div>
+
         </div>
 
         <CheckinForm

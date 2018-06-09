@@ -17,11 +17,13 @@ class Demo extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header demo">
+      <div className="header bg-image demo">
         <div className="text large">
           <h1>{this.state.props.bigWords}</h1>
         </div>
-        <img src="css/images/bamboo_steps.png"/>
+        <div className="bg">
+          <img src="css/images/bamboo_lane.png"/>
+        </div>
       </div>
     );
   }

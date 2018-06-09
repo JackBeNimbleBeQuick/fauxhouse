@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Link from '../component/link';
-import {Session} from '../com/Session';
+import Link from '../../component/link';
+import {Session} from '../../com/Session';
 
 class Navbar extends React.Component <any, any > {
 

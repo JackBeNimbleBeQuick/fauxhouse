@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-class Home extends React.Component <any, any > {
+class Solution extends React.Component <any, any > {
 
   //@TODO move this into inrerface.pageProps
   static defaultProps = {
-    bigWords:'Employee health, one habit at a time.',
-    smallWords:'LifeDojo’s ongoing 12-week wellbeing programs inspire behavior change that lasts.',
+    bigWords:'Evidence-based, Employee-loved',
+    smallWords:'12-week programs',
   }
 
   constructor(props:any){
@@ -18,15 +18,17 @@ class Home extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header home">
+      <div className="header bg-image solutions">
         <div className="text">
           <h1>{this.state.props.bigWords}</h1>
-          <h4>{this.state.props.smallWords}</h4>
+          <h1>{this.state.props.smallWords}</h1>
         </div>
-        <img src="css/images/birchlawn.png"/>
+        <div className="bg">
+          <img src="css/images/openfield.png"/>
+        </div>
       </div>
     );
   }
 }
 
-export default Home;
+export default Solution;

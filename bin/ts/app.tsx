@@ -2,15 +2,15 @@
 
 
 import * as React from 'react';
-import Navbar from './src/containers/navbar';
-import Home from './src/containers/home';
-import Solution from './src/containers/solution';
-import About from './src/containers/about';
-import Demo from './src/containers/demo';
-import Blog from './src/containers/blog';
-import Login from './src/containers/login';
-import Logout from './src/containers/logout';
-import Appointments from './src/containers/appointments';
+import Navbar from './src/containers/parts/navbar';
+import Home from './src/containers/views/home';
+import Solution from './src/containers/views/solution';
+import About from './src/containers/views/about';
+import Demo from './src/containers/views/demo';
+import Blog from './src/containers/views/blog';
+import Login from './src/containers/views/login';
+import Logout from './src/containers/views/logout';
+import Appointments from './src/containers/views/appointments';
 import {Session} from './src/com/Session';
 
 

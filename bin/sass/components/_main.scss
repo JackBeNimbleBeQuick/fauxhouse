@@ -84,9 +84,11 @@ h1{
 }
 .form{
   @include fadedBG(0,0.5);
+  margin: 0 calc(30% - 100pt);
   position: absolute;
-  top: 2em;
+  top: 3em;
   transition: 0.5s all ease-in-out;
+  width: 200pt;
   .closer{
     color: $white;
     position: absolute;
@@ -100,7 +102,6 @@ h1{
   }
   form{
     font-size: 0.8em;
-    min-width: 229pt;
     padding: 0.5em;
     position: relative;
     top: 0;
@@ -360,16 +361,16 @@ h1{
   }
 }
 @media(min-width:600px){
-  .main .header.login .form form{
-    bottom:auto;
-    margin: 0 4em 0 0;
-    right: 0;
-  }
 }
 @media(max-width:480px){
   .main{
+    .header.login .form{
+      bottom:auto;
+      margin: 0 calc(50% - 100pt);
+      right: 0;
+    }
     .carda,.cardb{
-      height: 133pt;
+      height: 125pt;
     }
   }
   .nav{

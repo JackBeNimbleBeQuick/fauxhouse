@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoginForm from '../forms/login_form';
+import LoginForm from '../../forms/login_form';
 
 class Login extends React.Component <any, any > {
 
@@ -17,10 +17,12 @@ class Login extends React.Component <any, any > {
 
   render() {
     return (
-      <div className="header login">
+      <div className="header bg-image login">
         <LoginForm
         />
-        <img src="css/images/bamboo_lane.png"/>
+        <div className="bg">
+          <img src="css/images/forest.png"/>
+        </div>
       </div>
     );
   }

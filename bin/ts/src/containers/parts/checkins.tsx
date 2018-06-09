@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Closer from '../component/closer';
-import {Session} from '../com/Session';
+import Closer from '../../component/closer';
+import {Session} from '../../com/Session';
 
 class Checkins extends React.Component <any, any > {
 
