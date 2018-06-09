@@ -8,6 +8,8 @@
 //     export default value;
 // }
 
+// @NOTE there may be a new base
+// Identifier string that would then not make this necessary
 /* __ Primative __*/
 interface indexed_number{
   [key:string]:number
@@ -70,7 +72,8 @@ interface comStateItem{
 
 interface Session {
   data:SessionData,
-  permitted(): boolean
+  permitted(): boolean,
+  loggedIn():boolean,
 }
 
 interface SessionData{
@@ -109,49 +112,6 @@ interface filterInterface {
 /* __ Validators ___ */
 interface validatorInterface {
   isValid(value:any):Boolean
-}
-
-/* __ Exchange ___ */
-interface Exchange{
-  getCall(key:string): string | Boolean,
-  getMap(key:string): exchangeMap,
-  getMaps(): exchangeMap,
-  getCalls(): indexed_string
-}
-
-/* __ exchange data type ___ */
-interface exchangeConditions{
-  true: string,
-  false: string,
-  logic: null | Function
-}
-
-interface exchangeMaps{
-  [key:string]: exchangeMap
-}
-
-interface exchangeMap{
-  sequence: exchangeSequence
-}
-
-interface exchangeSequence{
-  [key:string]: exchangeLink
-}
-
-interface exchangeLink{
-  product: string,
-  action: string, //post,get,put,delete
-  wait?: number,
-  dominion: string, // session | public
-  protocol: string,
-  host: string,
-  tokens: string | null,
-  uri: string,
-  //should be explicit data type
-  //used as primary key in key:value storage
-  returns: string,
-  requires: string | null,
-  conditions: null | exchangeConditions
 }
 
 /* Storage */

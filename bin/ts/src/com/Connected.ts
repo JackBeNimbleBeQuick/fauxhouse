@@ -39,10 +39,9 @@ export class Connected{
     //es6+ may not need this for better scoped vars
     let xhr_ = this.xhr;
     this.xhr.onreadystatechange = () => {
-      // this.processServerResponse();
       if (xhr_.readyState == XMLHttpRequest.DONE) {
         if(xhr_.status == 200){
-      this.processServerResponse();
+        this.processServerResponse();
           return success(xhr_.responseText);
         }else{
 	        return failure(xhr_.responseText);
@@ -52,13 +51,25 @@ export class Connected{
     xhr_.send(postage.data);
   }
 
+  /**
+   * Stub out in the case where this may be useful for tayloring
+   * communications after initial connects
+   * @return Array<string> of header results or parse results
+   */
   private processServerResponse = () => {
     let headers = this.xhr.getAllResponseHeaders();
     // console.log(headers);
+    return [];
   }
 
 
-	private setHeaders= (type:any) => {
+  /**
+   * Determined by the postage.header_type
+   * <see postage interface for latetest use cases
+   * @param {string} type
+   * @return {void} sets headers on current xhr
+   */
+	private setHeaders= (type?:string) => {
     switch(type){
       case 'form':
     		this.xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -85,6 +96,12 @@ export class Connected{
     }
   };
 
+   /**
+    * sanity check to make sure strings passed in result in correct usage
+    * for REST : POST | GET | DELETE | PUT
+    * @param  datum
+    * @return       
+    */
    private getType(datum:postage){
     let matchable = datum.type.match(/\b(post|get|delete|put)\b/i);
     if(matchable &&matchable.length > 0 ) return matchable[0].toUpperCase();

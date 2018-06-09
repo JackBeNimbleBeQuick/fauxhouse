@@ -11,10 +11,12 @@ export class Session implements Session{
   constructor(){
   }
 
+  /**
+   * entity / context based permissions support
+   * @type {string}
+   */
   public permitted = (key:string) => {
-    // console.log(`actions received: ${key}`);
     let stored = this.retrieve('login');
-    // console.log(stored);
     if ( ! stored || ! this.logged(stored) ) return false;
     if(stored.permits && stored.permits.zones[key]) return stored.permits.zones[key];
     return false;
@@ -28,10 +30,12 @@ export class Session implements Session{
       let s_resp =  JSON.parse(response);
       let compare:any  = this.serviceConfig().params.login_success;
       if(s_resp.status && compare.status && s_resp.status === compare.status ){
-        this.saveLogin({
+        //@NOTE stub out for a client Object interface that should get
+        // . created to meet your needs
+        this.storeSessionData({
           logged_in: true,
           pid: data.username,
-          name: "Jack",
+          name: "Yosemite Sam",
           key: 'login',
           permits:{ // making things explicit
             zones:{
@@ -48,6 +52,10 @@ export class Session implements Session{
     this.connect().send(this.loginPostage(data),succeeds, error);
   }
 
+  /**
+   * Explains itself
+   * @return {string}
+   */
   public loginName = () => {
     let login = this.retrieve('login');
     if(login) return login.name;
@@ -55,6 +63,10 @@ export class Session implements Session{
 
   }
 
+  /**
+   * Explains itself
+   * @return {boolean}
+   */
   public logout = () => {
     window.sessionStorage
      ? window.sessionStorage.clear()
@@ -62,28 +74,50 @@ export class Session implements Session{
    return true;
   }
 
+  /**
+   * Returns boolean for whether this is a logged in instance
+   * .where the most general details live
+   * @return {boolean}
+   */
   public loggedIn = ():boolean => {
     return this.logged(this.retrieve('login'));
   }
 
+  /**
+   * Internal method for loggedIn
+   * .where the implementation details live
+   * @type {[type]}
+   */
   private logged = (session: SessionData) => {
     let login = this.retrieve('login');
     if(login && login.logged_in) return login.logged_in;
     return false;
   }
 
+  /**
+   * Hydrate the service config object lazy boy style
+   * @return {any}
+   */
   public serviceConfig  = ():services=> {
     if(this.config) return this.config;
     this.config = Config.getServices();
     return this.config;
   }
 
+  /**
+   * Lazy load for the connection layer /layer's
+   * @returns {Function|Class} that implements Connected interface
+   */
   private connect = () => {
     if (this.connected) return this.connected;
     this.connected  = new Connected();
     return this.connected;
   }
 
+  /**
+   * This packaging for the relevent :Postage for Connected Interface
+   * @return {postage}
+   */
   private loginPostage = (data:Object) => {
     if( ! this.config) this.config = Config.getServices();
     let service = this.serviceConfig().params;
@@ -95,10 +129,19 @@ export class Session implements Session{
     }
   }
 
-  private saveLogin = (data: SessionData) =>{
+  /**
+   * Wrapper for login storage
+   * @type {SessionData}
+   */
+  private storeSessionData = (data: SessionData) =>{
     this.storage().setItem(data.key, JSON.stringify(data));
   }
 
+  /**
+   * storage handlers which could include DBs with connection
+   * credentials delegated to the protected auth mehods
+   * @type {StorageInferface|Object}
+   */
   private storage = () => {
     if (window.sessionStorage) {
       return window.sessionStorage;

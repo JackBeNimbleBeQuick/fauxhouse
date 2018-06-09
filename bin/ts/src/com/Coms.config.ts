@@ -4,6 +4,9 @@ export class Config {
 
   public static getServices = ():services => {
 
+    let port:string = document && document.location ? document.location.port : '8091';
+
+
     let prodService:appointmentService = {
       base: 'https://loginservice.com/',
       login: 'login',
@@ -12,7 +15,7 @@ export class Config {
     }
 
     let devService:appointmentService =  {
-      base: 'local-host:',
+      base: `http://localhost:${port}/staging/`,
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'check-ins',

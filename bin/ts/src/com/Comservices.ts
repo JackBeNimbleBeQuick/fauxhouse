@@ -19,12 +19,12 @@ export class Comservices{
     this.connect = new Connected();
   }
 
-  //POST
+  //POST @NOTE Build out others as needed
   /**
    * @TODO Move this to somewhere that makes better sense
    * Get Appointments History
-   * @param {Function} success [description]
-   * @param  {Function} error   [description]
+   * @param {Function} success
+   * @param  {Function} error
    * @return {void} Connected:sends passes results to the passed in functions
    */
   public post = (post:appointmentHistory ,success:Function, error:Function ) =>{
@@ -42,8 +42,8 @@ export class Comservices{
   /**
    * @TODO Move this to somewhere that makes better sense
    * Get Appointments History
-   * @param {Function} success [description]
-   * @param  {Function} error   [description]
+   * @param {Function} success
+   * @param  {Function} error
    * @return {void} Connected:sends passes results to the passed in functions
    */
   public get= (success:Function, error:Function ) =>{
@@ -64,8 +64,8 @@ export class Comservices{
    * . single simple call signatures at app level
    * . offload and communication details from the app layer
    * . maintain reusability with other communication types
-   * @param  data [description]
-   * @return      [description]
+   * @param  data
+   * @return
    */
   private packager = (data:any) => {
     // console.log(data);
