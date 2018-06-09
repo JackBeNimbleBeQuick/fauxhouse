@@ -352,12 +352,11 @@ h1{
     }
   }
 }
-@media(max-width:480px){
-  .nav{
-    transform: translateX(110%);
-  }
-  .nav-button{
-    transform: translateY(0);
+@media(min-width:768px){
+  .main{
+    .carda,.cardb{
+      height: 365pt;
+    }
   }
 }
 @media(min-width:600px){
@@ -365,5 +364,18 @@ h1{
     bottom:auto;
     margin: 0 4em 0 0;
     right: 0;
+  }
+}
+@media(max-width:480px){
+  .main{
+    .carda,.cardb{
+      height: 133pt;
+    }
+  }
+  .nav{
+    transform: translateX(110%);
+  }
+  .nav-button{
+    transform: translateY(0);
   }
 }
