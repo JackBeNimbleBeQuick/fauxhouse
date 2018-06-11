@@ -46,7 +46,6 @@ class Navbar extends React.Component <any, any > {
         label = "Log Out";
       }
 
-
       if(show){
         return(
           <li key={i} className={key} >

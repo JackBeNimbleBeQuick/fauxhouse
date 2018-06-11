@@ -34,6 +34,7 @@ interface serviceClass {
 }
 
 interface services{
+  server_port: number,
   env: string,
   params: appointmentService
 }

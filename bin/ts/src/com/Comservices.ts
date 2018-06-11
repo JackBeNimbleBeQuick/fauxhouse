@@ -27,7 +27,7 @@ export class Comservices{
    * @param  {Function} error
    * @return {void} Connected:sends passes results to the passed in functions
    */
-  public post = (post:appointmentHistory ,success:Function, error:Function ) =>{
+  public post = (post:appointmentHistory ,success:Function, error:Function ) => {
     let params = this.services.params;
     this.forward = success;
     this.connect.send({
@@ -53,7 +53,7 @@ export class Comservices{
       url: params.base + params.appointments,
       type: 'GET',
       data: null, // 8^) looking into this
-      header_type: 'form'
+      header_type: 'form_ac'
     },this.packager, error);
   }
 

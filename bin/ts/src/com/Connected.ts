@@ -71,10 +71,11 @@ export class Connected{
    */
 	private setHeaders= (type?:string) => {
     switch(type){
+      case 'form-ac':
+    		this.xhr.setRequestHeader("Access-Control-Allow-Credentials",'true');
       case 'form':
     		this.xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     		this.xhr.setRequestHeader("Accept","application/json");
-    		this.xhr.setRequestHeader("Access-Control-Allow-Credentials",'true');
       break;
       case 'json':
     		this.xhr.setRequestHeader("Content-Type","application/json");
@@ -100,7 +101,7 @@ export class Connected{
     * sanity check to make sure strings passed in result in correct usage
     * for REST : POST | GET | DELETE | PUT
     * @param  datum
-    * @return       
+    * @return
     */
    private getType(datum:postage){
     let matchable = datum.type.match(/\b(post|get|delete|put)\b/i);

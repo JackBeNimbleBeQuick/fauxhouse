@@ -3,10 +3,20 @@
   "version": "0.0.1",
   "description": "Init login setup for a friend: this project will expire @06/08/2018",
   "main": "js/app.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/chokidar": "^1.7.5",
+    "@types/debug": "0.0.30",
+    "@types/express": "^4.16.0",
+    "@types/mongodb": "^3.0.19",
+    "body-parser": "^1.18.3",
+    "mongod": "^2.0.0",
+    "mongodb": "^3.0.10"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.46",
     "@babel/register": "^7.0.0-beta.46",
+    "@types/es6-shim": "^0.31.37",
     "@types/node": "^10.3.0",
     "@types/react": "^16.3.16",
     "@types/react-dom": "^16.0.5",
@@ -14,6 +24,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "child_process": "^1.0.2",
+    "express": "^4.16.3",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -50,6 +61,9 @@
     "test": "ts/tests"
   },
   "scripts": {
+    "db": "mongod --dbpath=./db",
+    "tsc": "tsc",
+    "express": "node js/server/server.js",
     "start": "node serve.js"
   },
   "repository": {

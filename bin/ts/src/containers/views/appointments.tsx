@@ -28,7 +28,11 @@ class Appointments extends React.Component <any, any > {
 
   toggleQuery = (e:any) => {
     e.preventDefault();
-    this.state.showQuery ? this.setState({showQuery:false}) : this.setState({showQuery:true}) ;
+    console.log(e);
+    this.setState({
+      showQuery: this.state.showQuery ? false : true
+    });
+
   }
 
   renderList = (response:any) => {
@@ -41,7 +45,7 @@ class Appointments extends React.Component <any, any > {
   }
 
   checkinSent = (response:any) => {
-    // console.log(response);
+    console.log(response);
     let s_today:string = Dates.datesFormat(new Date(),'yyyy-mm-dd');
     this.setState({
       showQuery: false,
@@ -58,7 +62,8 @@ class Appointments extends React.Component <any, any > {
     // console.log(e);
     this.props.services.get(
       this.renderList,
-      this.serviceError
+      this.renderList
+      // this.serviceError
     );
   }
 
@@ -87,7 +92,7 @@ class Appointments extends React.Component <any, any > {
             <h2>{this.props.title}</h2>
           </div>
 
-          <span className="left top">
+          <span className="left top button">
             <a data-state="button" href="#getForm"
               onClick={ e => this.toggleQuery(e) }
               >Make / Edit</a>

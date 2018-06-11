@@ -45,6 +45,9 @@ h1{
     content: close-quote;
   }
 }
+.button{
+  z-index: 5; 
+}
 .list{
   &.checkins{
     @include fadedBG(0,0.8);
@@ -57,6 +60,7 @@ h1{
     text-align: center;
     top: 3em;
     width: 200pt;
+    z-index:1;
     &.up{
       transform: translateY(-200%);
     }
@@ -83,7 +87,7 @@ h1{
   }
 }
 .form{
-  @include fadedBG(0,0.5);
+  @include fadedBG(0,0.75);
   margin: 0 calc(30% - 100pt);
   position: absolute;
   top: 3em;
@@ -98,8 +102,10 @@ h1{
       color: green;
     }
   }
+
+  &slider.left,
   &.left{
-    transform: translateX(-110%);
+    transform: translateX(-400%);
   }
   form{
     font-size: 0.8em;
@@ -194,6 +200,7 @@ h1{
   font-weight: 2;
   padding: 5pt;
   position: absolute;
+  opacity: 1;
   right: 0.5em;
   transform: translateX(0);
   transition: 0.5s all ease-in-out;
@@ -215,15 +222,16 @@ h1{
       border-left: solid 0.5pt $white;
     }
     a{
+      display: inline-block;
       @include fadedFont(255, 0.65);
       text-decoration: none;
+      width: 100%;
       &:hover{
         color: $white;
       }
     }
   }
 }
-
 .nav-button{
   background: transparent;
   border: none;
@@ -231,7 +239,7 @@ h1{
   right: .5em;
   top: 0.5em;
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-200%);
   z-index: 1;
   &:active{
     .icon{
@@ -249,6 +257,7 @@ h1{
 
 .menu.slider{
   ul.nav{
+    opacity: 0;
     right: 3.5em;
     transform: translate(0, -110%);
     li{
@@ -268,6 +277,7 @@ h1{
   &.down{
     .nav{
       transform: translate(0, 0);
+      opacity: 1;
     }
   }
 }
@@ -290,10 +300,6 @@ h1{
       transform: translateX(0);
     }
   }
-  .carda,.cardb{
-    // height: 200pt;
-    overflow: hidden;
-  }
   .carda{
     transform: translateX(0);
   }
@@ -304,9 +310,10 @@ h1{
     transition: 1s all ease-in-out;
     position: absolute;
     top: 0;
+    width: 100%;
   }
   .header{
-    height: 150pt;
+    height: 195pt;
     position: relative;
     overflow: hidden;
     transition: 0.5s all ease-in-out;
@@ -319,7 +326,7 @@ h1{
         background-color: #000;
         margin-left: -50%;
         margin-top: -50%;
-        @include opacity(0.7);
+        @include opacity(0.6);
         position: relative;
         top: 50%;
         width:200%;
@@ -382,24 +389,19 @@ h1{
     }
   }
 }
-@media(min-width:768px){
+@media(max-width:768px){
   .main{
-    .carda,.cardb{
-      // height: 365pt;
+    .header{
+      // height: 150pt;
     }
-  }
-}
-@media(min-width:600px){
-}
-@media(max-width:480px){
-  .main{
+    .page .form.slider,
     .header.login .form{
       bottom:auto;
       margin: 0 calc(50% - 100pt);
       right: 0;
     }
-    .carda,.cardb{
-      // height: 125pt;
+    .page .form.slider.left{
+      transfor: translateX(-400%);
     }
   }
   .nav{
@@ -408,4 +410,9 @@ h1{
   .nav-button{
     transform: translateY(0);
   }
+}
+@media(min-width:600px){
+}
+@media(max-width:480px){
+
 }

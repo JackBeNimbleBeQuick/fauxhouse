@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "commonjs",
     "target": "es5",
     "preserveConstEnums": true,
     "outDir": "js/",
@@ -17,6 +17,7 @@
     "sourceMap": true
   },
   "files" : [
+    "ts/server/server.ts",
     "ts/index.tsx",
   ],
   "filesGlob":[
