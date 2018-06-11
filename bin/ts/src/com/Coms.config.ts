@@ -12,7 +12,7 @@ export class Config {
     }
 
     let devService:appointmentService =  {
-      base: 'https://ue7jsck4wk.execute-api.us-west-2.amazonaws.com/staging/',
+      base: 'http://localhost:8081/',
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'check-ins',
