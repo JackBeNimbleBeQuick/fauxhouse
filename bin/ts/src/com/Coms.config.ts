@@ -4,18 +4,19 @@ export class Config {
 
   public static getServices = ():services => {
 
-    // let port:string = document && document.location ? dhttp://localhost:8091/loginocument.location.port : '8092';
-    let port = 8092;
+    let s_port = 8092;
+    let c_port = 8091;
+    let d_port = 3050;
 
     let prodService:appointmentService = {
-      base: 'https://loginservice.com/',
+      base: `https://loginservice.com:${d_port}/`,
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'appointments',
     }
 
     let devService:appointmentService =  {
-      base: `http://localhost:${port}/`,
+      base: `http://localhost:${s_port}/`,
       login: 'login',
       login_success: {"status":"ok"},
       appointments: 'appointments',
@@ -31,7 +32,7 @@ export class Config {
     }
 
     let state:services = {
-      server_port: port,
+      server_port: env == 'prod' ? d_port : c_port,
       env: env,
       params: env === 'prod' ? prodService : devService
     }

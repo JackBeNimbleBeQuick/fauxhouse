@@ -62,8 +62,7 @@
   },
   "scripts": {
     "db": "mongod --dbpath=./db",
-    "tsc": "tsc",
-    "express": "node js/server/server.js",
+    "express": "node js/server/bin/run.js",
     "start": "node serve.js"
   },
   "repository": {
